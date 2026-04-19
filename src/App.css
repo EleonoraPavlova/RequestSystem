@@ -1,0 +1,17 @@
+#root {
+  text-align: center;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  line-height: 24px;
+  color: #fff;
+  background-color: #000;
+}

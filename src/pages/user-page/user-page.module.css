@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  gap: 3rem;
+  margin: 2rem 0;
+  align-items: flex-start;
+}
+
+.wrapper > * {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .wrapper > * {
+    flex: none;
+  }
+}
