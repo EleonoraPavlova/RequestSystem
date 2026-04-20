@@ -28,7 +28,7 @@ In the **User's area** users can:
 - Fill out a form to create a new request (Title and Description)
 - View all their created requests as cards
 - See request status (`New`, `In progress`, `Done`)
-- Delete any request
+- See all requests
 
 All requests are automatically saved to `localStorage`, so data persists between sessions.
 

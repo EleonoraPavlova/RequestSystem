@@ -17,13 +17,7 @@ const StatusBadge = ({ status, className }: StatusBadgeProps): ReactElement => {
     [RequestStatus.InProgress]: styles.statusInProgress,
   };
 
-  return (
-    <span
-      className={cn(styles.badge, statusClasses[status], className)}
-    >
-      {status}
-    </span>
-  )
+  return <span className={cn(styles.badge, statusClasses[status], className)}>{status}</span>;
 };
 
 export default StatusBadge;

@@ -4,11 +4,19 @@ export enum RequestStatus {
   Done = "done",
 }
 
+export interface FilterOption {
+  key: FilterStatus;
+  label: string;
+}
+
+export type FilterStatus = RequestStatus | "all";
+
 export interface RequestCard {
   id: string;
   title: string;
   description: string;
   status: RequestStatus;
+  createdAt: string;
 }
 
 export interface RequestCardsState {
@@ -16,4 +24,5 @@ export interface RequestCardsState {
   isLoading: boolean;
   error: string | null;
   success: boolean;
+  filter: FilterStatus;
 }
