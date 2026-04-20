@@ -4,7 +4,7 @@
 
 ## Deployment:
 
-[Vercel](https://) - web
+[Vercel](https://request-system-seven.vercel.app/) - web
 
 
 > ## How to start:
@@ -33,6 +33,12 @@ In the **User's area** users can:
 All requests are automatically saved to `localStorage`, so data persists between sessions.
 
 ### 2. **Manager View:**
+
+ - Request Dashboard: View all incoming requests from all users in a clean, organized card grid
+ - Status Management: Update request stages lifecycle (e.g., moving a request from New to In Progress or Done)
+- Dynamic Filtering: Quickly sort and find requests using a status-based filter (All, New, In Progress, Done) powered by HeroUI Dropdown
+ - Request Deletion: Ability to permanently remove requests from the system
+ - Detailed Insights: Each card displays unique request IDs and automated creation timestamps for better tracking
 
 
 ### 3. **Responsive Design:**
