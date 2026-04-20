@@ -11,7 +11,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isLoading?: boolean;
 }
 
-export const Button = ({
+const Button = ({
   children,
   variant = "primary",
   size = "md",
@@ -37,3 +37,5 @@ export const Button = ({
     </button>
   );
 };
+
+export default Button;

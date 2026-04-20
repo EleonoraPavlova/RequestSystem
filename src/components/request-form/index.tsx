@@ -4,10 +4,10 @@ import { ReactElement, useState } from "react";
 import { initialValues, requestSchema } from "./schema";
 import styles from "./request-form.module.css";
 
-import { Button } from "@/components/button";
 import { addRequest } from "@/services/requestSlice";
 import AlertHeroui from "@/components/alert";
 import { useAppDispatch } from "@/services/hooks";
+import Button from "@/components/button";
 
 const RequestForm = (): ReactElement => {
   const [isAlertVisible, setIsAlertVisible] = useState(false);
