@@ -3,7 +3,7 @@ import { RouteObject } from "react-router-dom";
 import ManagerPage from "@/pages/manager-page";
 import UserPage from "@/pages/user-page";
 import { PATH } from "@/shared/enums";
-import LogsPage from "@/pages/logs-page";
+import EventsPage from "@/pages/events-page";
 
 export const router: RouteObject[] = [
   {
@@ -16,7 +16,7 @@ export const router: RouteObject[] = [
   },
   {
     path: PATH.LOGS,
-    element: <LogsPage />,
+    element: <EventsPage />,
   },
   {
     path: PATH.NOT_FOUND_ROUTE,
