@@ -9,9 +9,11 @@ import { addRequest } from "@/services/requestSlice";
 import AlertHeroui from "@/components/alert";
 import { useAppDispatch } from "@/services/hooks";
 import Button from "@/components/button";
+import { useActionLogger } from "@/shared/hooks/useActionLogger";
 
 const RequestForm = (): ReactElement => {
   const { T: t } = useT();
+  const logAction = useActionLogger("User");
   const [isAlertVisible, setIsAlertVisible] = useState(false);
   const dispatch = useAppDispatch();
 
@@ -22,6 +24,7 @@ const RequestForm = (): ReactElement => {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       dispatch(addRequest(values));
+      logAction(t("The create request button was pressed"));
       console.log("Form Submitted:", values);
 
       setIsAlertVisible(true);

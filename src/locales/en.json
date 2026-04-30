@@ -1,5 +1,6 @@
 {
   "action_change_status": "Change Status",
+  "action_create_click": "Create request button pressed",
   "action_delete": "Delete",
   "alert_request_created": "Request created successfully!",
   "alert_request_removed": "Request removed successfully!",
@@ -23,6 +24,7 @@
   "list_empty": "No requests found. Create one above!",
   "language_selection": "Language selection",
   "loading": "Loading...",
+  "logs": "Logs",
   "manager": "Manager",
   "modal_cancel": "Cancel",
   "modal_confirm_delete": "Are you sure you want to delete this request? This action cannot be undone",
@@ -41,5 +43,12 @@
   "validation_description_required": "Description is required",
   "validation_description_too_short": "Description must be at least 10 characters",
   "validation_title_required": "Title is required",
-  "validation_title_too_short": "Title is too short"
+  "validation_title_too_short": "Title is too short",
+  "logs_title": "Action Logs",
+  "logs_role": "Role",
+  "logs_action": "Action",
+  "logs_time": "Time",
+  "logs_empty": "No logs yet",
+  "role_manager": "Manager",
+  "role_user": "User"
 }

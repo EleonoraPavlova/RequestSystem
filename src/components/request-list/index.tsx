@@ -13,9 +13,11 @@ import { PATH } from "@/shared/enums";
 import { cn } from "@/shared/lib/cn";
 import ModalConfirm from "@/components/modal";
 import AlertHeroui from "@/components/alert";
+import { useActionLogger } from "@/shared/hooks/useActionLogger";
 
 const RequestList = (): ReactElement => {
   const { T: t } = useT();
+  const logAction = useActionLogger("Manager");
   const { list, filter } = useAppSelector((state) => state.items);
 
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -41,6 +43,7 @@ const RequestList = (): ReactElement => {
 
       if (next) {
         dispatch(changeRequestStatus({ id, newStatus: next }));
+        logAction(t("Status was changed"));
       }
     },
     [dispatch]

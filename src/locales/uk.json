@@ -1,5 +1,6 @@
 {
    "action_change_status": "Змінити статус",
+   "action_create_click": "Натиснуто кнопку створення запиту",
    "action_delete": "Видалити",
    "alert_request_created": "Запит успішно створено!",
    "alert_request_removed": "Запит успішно видалено!",
@@ -23,6 +24,7 @@
    "list_empty": "Запитів не знайдено. Створіть новий вище!",
    "language_selection": "Вибір мови",
    "loading": "Завантаження...",
+   "logs": "Логування",
    "manager": "Менеджер",
    "modal_cancel": "Скасувати",
    "modal_confirm_delete": "Ви впевнені, що хочете видалити цей запит? Цю дію неможливо скасувати",
@@ -41,5 +43,12 @@
    "validation_description_required": "Опис обов'язковий",
    "validation_description_too_short": "Опис має містити щонайменше 10 символів",
    "validation_title_required": "Заголовок обов'язковий",
-   "validation_title_too_short": "Заголовок занадто короткий"
- }
+   "validation_title_too_short": "Заголовок занадто короткий",
+   "logs_title": "Логи дій",
+   "logs_role": "Роль",
+   "logs_action": "Дія",
+   "logs_time": "Час",
+   "logs_empty": "Логів ще немає",
+   "role_manager": "Менеджер",
+   "role_user": "Користувач"
+}
