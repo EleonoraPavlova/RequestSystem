@@ -6,6 +6,7 @@ import Logo from "../logo";
 
 import { PATH } from "@/shared/enums";
 import ThemeToggle from "@/components/theme-toggle";
+import LanguageSwitcher from "@/components/lang-switcher";
 
 const NavbarHeroui = (): ReactElement => {
   const customClass = ({ isActive }: { isActive: boolean }) =>
@@ -30,7 +31,10 @@ const NavbarHeroui = (): ReactElement => {
           </NavLink>
         </NavbarItem>
       </NavbarContent>
-      <ThemeToggle />
+      <div className="flex gap-4 items-center ml-7">
+        <ThemeToggle />
+        <LanguageSwitcher />
+      </div>
     </Navbar>
   );
 };

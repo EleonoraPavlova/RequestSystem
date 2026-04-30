@@ -11,12 +11,14 @@ import RequestItem from "@/components/request-list/request-item";
 import { PATH } from "@/shared/enums";
 import { cn } from "@/shared/lib/cn";
 import ModalConfirm from "@/components/modal";
+import AlertHeroui from "@/components/alert";
 
 const RequestList = (): ReactElement => {
   const { list, filter } = useAppSelector((state) => state.items);
 
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [requestToDelete, setRequestToDelete] = useState<RequestCard["id"] | null>(null);
+  const [isAlertVisible, setIsAlertVisible] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -55,6 +57,11 @@ const RequestList = (): ReactElement => {
   const confirmDelete = useCallback(() => {
     if (requestToDelete) {
       dispatch(removeRequest(requestToDelete));
+
+      setIsAlertVisible(true);
+      setTimeout(() => {
+        setIsAlertVisible(false);
+      }, 4000);
     }
     closeDeleteModal();
   }, [dispatch, requestToDelete, closeDeleteModal]);
@@ -90,6 +97,7 @@ const RequestList = (): ReactElement => {
         onConfirm={confirmDelete}
         description="Are you sure you want to delete this request? This action cannot be undone"
       />
+      {isAlertVisible && <AlertHeroui title={"Request removed successfully!"} color={"success"} />}
     </>
   );
 };
