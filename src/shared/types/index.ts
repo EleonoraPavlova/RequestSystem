@@ -26,3 +26,19 @@ export interface RequestCardsState {
   success: boolean;
   filter: FilterStatus;
 }
+
+export type LanguageCode = "uk" | "en";
+
+export interface Language {
+  code: LanguageCode;
+  name: string;
+  nativeName: string;
+  flag: string;
+}
+
+export interface LogEntry {
+  id: string;
+  role: "User" | "Manager";
+  timestamp: string;
+  action: string;
+}

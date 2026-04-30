@@ -1,7 +1,8 @@
 import { useFormik } from "formik";
 import { ReactElement, useState } from "react";
+import { useT } from "talkr";
 
-import { initialValues, requestSchema } from "./schema";
+import { createRequestSchema, initialValues } from "./schema";
 import styles from "./request-form.module.css";
 
 import { addRequest } from "@/services/requestSlice";
@@ -10,12 +11,13 @@ import { useAppDispatch } from "@/services/hooks";
 import Button from "@/components/button";
 
 const RequestForm = (): ReactElement => {
+  const { T: t } = useT();
   const [isAlertVisible, setIsAlertVisible] = useState(false);
   const dispatch = useAppDispatch();
 
   const formik = useFormik({
     initialValues,
-    validationSchema: requestSchema,
+    validationSchema: createRequestSchema(t),
     onSubmit: async (values, { resetForm }) => {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
@@ -36,14 +38,14 @@ const RequestForm = (): ReactElement => {
       <form onSubmit={formik.handleSubmit} className={styles.form}>
         <div className={styles.field}>
           <label htmlFor="title" className={styles.label}>
-            Title
+            {t("form_title_label")}
           </label>
           <input
             id="title"
             name="title"
             type="text"
             className={styles.input}
-            placeholder="Enter title..."
+            placeholder={t("form_title_placeholder")}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.title}
@@ -55,13 +57,13 @@ const RequestForm = (): ReactElement => {
 
         <div className={styles.field}>
           <label htmlFor="description" className={styles.label}>
-            Description
+            {t("form_description_label")}
           </label>
           <textarea
             id="description"
             name="description"
             className={styles.input}
-            placeholder="Describe your request..."
+            placeholder={t("form_description_placeholder")}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.description}
@@ -78,12 +80,12 @@ const RequestForm = (): ReactElement => {
           disabled={!formik.isValid || !formik.dirty || formik.isSubmitting}
           className={styles.btn}
         >
-          {formik.isSubmitting ? "Sending..." : "Send"}
+          {formik.isSubmitting ? t("form_sending") : t("form_send")}
         </Button>
 
         {formik.status?.success && <p className="success-msg">{formik.status.message}</p>}
       </form>
-      {isAlertVisible && <AlertHeroui title={"Request created successfully!"} color={"success"} />}
+      {isAlertVisible && <AlertHeroui title={t("alert_request_created")} color={"success"} />}
     </>
   );
 };

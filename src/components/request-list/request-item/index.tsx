@@ -1,4 +1,5 @@
 import { memo, ReactElement, useState } from "react";
+import { useT } from "talkr";
 
 import styles from "./request-item.module.css";
 
@@ -17,19 +18,28 @@ interface RequestItemProps {
 
 const RequestItem = memo(
   ({ onDelete, onChangeStatus, request, isManagerPage }: RequestItemProps): ReactElement => {
+    const { T: t } = useT();
     const [isExpanded, setIsExpanded] = useState(false);
 
     return (
       <div className={cn(styles.item, isManagerPage && styles.manager)}>
         <div className={styles.container}>
-          {isManagerPage && <p>Id: {request.id}</p>}
-          <p>Data: {formatDate(request.createdAt)}</p>
-          <h4>Title: {request.title}</h4>
+          {isManagerPage && (
+            <p>
+              {t("request_id")}: {request.id}
+            </p>
+          )}
+          <p>
+            {t("request_date")}: {formatDate(request.createdAt)}
+          </p>
+          <h4>
+            {t("request_title")}: {request.title}
+          </h4>
           <p
             className={cn(styles.desc, isExpanded && styles.expanded)}
             onClick={() => setIsExpanded(!isExpanded)}
           >
-            Description: {request.description}
+            {t("request_description")}: {request.description}
           </p>
           <StatusBadge status={request.status} className={styles.badge} />
         </div>
@@ -41,7 +51,7 @@ const RequestItem = memo(
               onClick={() => onDelete(request.id)}
               className={styles.btn}
             >
-              Delete
+              {t("action_delete")}
             </Button>
 
             <Button
@@ -51,7 +61,7 @@ const RequestItem = memo(
               onClick={() => onChangeStatus(request.id, request.status)}
               className={styles.btn}
             >
-              Change Status
+              {t("action_change_status")}
             </Button>
           </div>
         )}

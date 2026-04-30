@@ -1,6 +1,7 @@
 import { ReactElement, useCallback, useMemo, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { useT } from "talkr";
 
 import styles from "./request-list.module.css";
 
@@ -11,12 +12,15 @@ import RequestItem from "@/components/request-list/request-item";
 import { PATH } from "@/shared/enums";
 import { cn } from "@/shared/lib/cn";
 import ModalConfirm from "@/components/modal";
+import AlertHeroui from "@/components/alert";
 
 const RequestList = (): ReactElement => {
+  const { T: t } = useT();
   const { list, filter } = useAppSelector((state) => state.items);
 
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [requestToDelete, setRequestToDelete] = useState<RequestCard["id"] | null>(null);
+  const [isAlertVisible, setIsAlertVisible] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -55,6 +59,11 @@ const RequestList = (): ReactElement => {
   const confirmDelete = useCallback(() => {
     if (requestToDelete) {
       dispatch(removeRequest(requestToDelete));
+
+      setIsAlertVisible(true);
+      setTimeout(() => {
+        setIsAlertVisible(false);
+      }, 4000);
     }
     closeDeleteModal();
   }, [dispatch, requestToDelete, closeDeleteModal]);
@@ -67,7 +76,7 @@ const RequestList = (): ReactElement => {
   );
 
   if (filteredRequests.length === 0) {
-    return <p>No requests found. Create one above!</p>;
+    return <p>{t("list_empty")}</p>;
   }
 
   return (
@@ -88,8 +97,9 @@ const RequestList = (): ReactElement => {
         isOpen={isDeleteModalOpen}
         onClose={closeDeleteModal}
         onConfirm={confirmDelete}
-        description="Are you sure you want to delete this request? This action cannot be undone"
+        description={t("modal_confirm_delete")}
       />
+      {isAlertVisible && <AlertHeroui title={t("alert_request_removed")} color={"success"} />}
     </>
   );
 };
