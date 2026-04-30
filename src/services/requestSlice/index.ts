@@ -17,15 +17,20 @@ const requestSlice = createSlice({
   reducers: {
     addRequest: (
       state,
-      action: PayloadAction<Omit<RequestCard, "id" | "status" | "createdAt">>
+      action: PayloadAction<Omit<RequestCard, "id" | "status" | "createdAt" | "isArchived">>
     ) => {
       const newCard = {
         ...action.payload,
         id: crypto.randomUUID(),
         status: RequestStatus.New,
         createdAt: new Date().toISOString(),
+        isArchived: false,
       };
       state.list = [newCard, ...state.list];
+    },
+    archiveRequest: (state, action: PayloadAction<string>) => {
+      const request = state.list.find((req) => req.id === action.payload);
+      if (request) request.isArchived = true;
     },
     changeRequestStatus: (
       state,
@@ -46,5 +51,6 @@ const requestSlice = createSlice({
   },
 });
 
-export const { addRequest, removeRequest, changeRequestStatus, setFilter } = requestSlice.actions;
+export const { addRequest, removeRequest, changeRequestStatus, setFilter, archiveRequest } =
+  requestSlice.actions;
 export default requestSlice.reducer;

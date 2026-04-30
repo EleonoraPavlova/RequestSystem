@@ -1,10 +1,14 @@
 {
    "action_change_status": "Змінити статус",
    "action_create_click": "Натиснуто кнопку створення запиту",
+   "alert_archived_success": "Успішно переміщено в архів",
+   "action_status_changed_to": "Статус змінено на: {{status}}",
    "action_delete": "Видалити",
    "alert_request_created": "Запит успішно створено!",
    "alert_request_removed": "Запит успішно видалено!",
    "alert_success_generic": "Успішно!",
+   "btn_archive": "Архів",
+   "btn_back_to_list": "До запитів",
    "cancel": "Скасувати",
    "confirm_delete": "Ви впевнені, що хочете видалити цей запит? Цю дію неможливо скасувати",
    "delete": "Видалити",
@@ -21,7 +25,7 @@
    "form_sending": "Надсилається...",
    "form_title_label": "Заголовок",
    "form_title_placeholder": "Введіть заголовок...",
-   "list_empty": "Запитів не знайдено. Створіть новий вище!",
+   "list_empty": "Запитів не знайдено",
    "language_selection": "Вибір мови",
    "loading": "Завантаження...",
    "logs": "Логування",
@@ -36,6 +40,7 @@
    "page_user_title": "Зона користувача",
    "request_create_title": "Створити запит",
    "request_date": "Дата",
+   "request_removed_success": "Запит видалено успішно",
    "request_description": "Опис",
    "request_id": "Id",
    "request_title": "Заголовок",
@@ -50,5 +55,9 @@
    "logs_time": "Час",
    "logs_empty": "Логів ще немає",
    "role_manager": "Менеджер",
-   "role_user": "Користувач"
+   "role_user": "Користувач",
+   "status_inprogress": "В роботі",
+   "status_done": "Виконано",
+   "status_new": "Новий",
+   "status_all": "Усі"
 }

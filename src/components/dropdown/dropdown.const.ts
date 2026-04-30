@@ -1,20 +1,20 @@
 import { FilterOption, RequestStatus } from "@/shared/types";
 
-export const filters: FilterOption[] = [
+export const getFilterOptions = (t: (key: string) => string): FilterOption[] => [
   {
     key: "all",
-    label: "All",
+    label: t("status_all"),
   },
   {
     key: RequestStatus.New,
-    label: "New",
+    label: t("status_new"),
   },
   {
     key: RequestStatus.InProgress,
-    label: "In progress",
+    label: t("status_inprogress"),
   },
   {
     key: RequestStatus.Done,
-    label: "Done",
+    label: t("status_done"),
   },
 ];

@@ -1,10 +1,14 @@
 {
   "action_change_status": "Change Status",
   "action_create_click": "Create request button pressed",
+  "alert_archived_success": "Successfully moved to the archive",
+  "action_status_changed_to": "Status changed to: {{status}}",
   "action_delete": "Delete",
   "alert_request_created": "Request created successfully!",
   "alert_request_removed": "Request removed successfully!",
   "alert_success_generic": "Success!",
+  "btn_archive": "Archive",
+  "btn_back_to_list": "Back to requests",
   "cancel": "Cancel",
   "confirm_delete": "Are you sure you want to delete this request? This action cannot be undone",
   "delete": "Delete",
@@ -21,7 +25,7 @@
   "form_sending": "Sending...",
   "form_title_label": "Title",
   "form_title_placeholder": "Enter title...",
-  "list_empty": "No requests found. Create one above!",
+  "list_empty": "No requests found",
   "language_selection": "Language selection",
   "loading": "Loading...",
   "logs": "Logs",
@@ -35,6 +39,7 @@
   "page_manager_title": "Manager's area",
   "page_user_title": "User's area",
   "request_create_title": "Create a request",
+  "request_removed_success": "Request removed successfully",
   "request_date": "Date",
   "request_description": "Description",
   "request_id": "Id",
@@ -50,5 +55,9 @@
   "logs_time": "Time",
   "logs_empty": "No logs yet",
   "role_manager": "Manager",
-  "role_user": "User"
+  "role_user": "User",
+  "status_all": "All",
+  "status_inprogress": "In Progress",
+  "status_done": "Done",
+  "status_new": "New"
 }

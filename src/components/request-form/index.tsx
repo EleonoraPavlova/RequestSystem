@@ -24,7 +24,7 @@ const RequestForm = (): ReactElement => {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       dispatch(addRequest(values));
-      logAction(t("The create request button was pressed"));
+      logAction(t("action_create_click"));
       console.log("Form Submitted:", values);
 
       setIsAlertVisible(true);
