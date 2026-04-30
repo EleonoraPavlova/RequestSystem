@@ -5,12 +5,13 @@ import { NavLink } from "react-router-dom";
 import Logo from "../logo";
 
 import { PATH } from "@/shared/enums";
+import ThemeToggle from "@/components/theme-toggle";
 
 const NavbarHeroui = (): ReactElement => {
   const customClass = ({ isActive }: { isActive: boolean }) =>
     isActive
-      ? "text-violet-500 underline underline-offset-4 decoration-violet-500 font-semibold"
-      : "text-white";
+      ? "text-secondary font-semibold underline underline-offset-4 decoration-secondary"
+      : "text-foreground/80 hover:text-foreground dark:text-foreground/90 dark:hover:text-white";
 
   return (
     <Navbar className="w-full bg-inherit text-inherit border border-gray-500 rounded-md justify-center mb-8">
@@ -29,6 +30,7 @@ const NavbarHeroui = (): ReactElement => {
           </NavLink>
         </NavbarItem>
       </NavbarContent>
+      <ThemeToggle />
     </Navbar>
   );
 };

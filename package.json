@@ -11,8 +11,10 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@gravity-ui/icons": "^2.18.0",
     "@heroui/image": "^2.2.19",
     "@heroui/react": "^2.7.6",
+    "@heroui/use-theme": "^2.1.10",
     "@reduxjs/toolkit": "^2.7.0",
     "eslint-plugin-import": "^2.31.0",
     "formik": "^2.4.9",
@@ -38,6 +40,7 @@
     "globals": "^16.0.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.5.1",
+    "lucide-react": "^1.14.0",
     "postcss": "^8.5.10",
     "prettier": "^3.5.3",
     "source-map-explorer": "^2.5.3",
