@@ -32,6 +32,11 @@ const NavbarHeroui = (): ReactElement => {
             {t("nav_manager")}
           </NavLink>
         </NavbarItem>
+        <NavbarItem>
+          <NavLink to={PATH.LOGS} className={customClass}>
+            {t("logs")}
+          </NavLink>
+        </NavbarItem>
       </NavbarContent>
       <div className="flex gap-4 items-center ml-7">
         <ThemeToggle />

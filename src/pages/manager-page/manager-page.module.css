@@ -1,6 +1,14 @@
 .dropdown {
   display: flex;
+  gap: 20px;
   justify-content: flex-end;
   margin-bottom: 2rem;
   padding: 0 1rem;
+}
+
+.btn {
+  font-weight: 600;
+  :hover {
+    color: #8b5cf6;
+  }
 }

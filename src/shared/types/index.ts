@@ -17,6 +17,7 @@ export interface RequestCard {
   description: string;
   status: RequestStatus;
   createdAt: string;
+  isArchived: boolean;
 }
 
 export interface RequestCardsState {

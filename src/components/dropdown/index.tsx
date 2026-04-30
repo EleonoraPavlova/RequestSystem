@@ -1,8 +1,9 @@
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@heroui/react";
-import { ReactElement } from "react";
+import { ReactElement, useMemo } from "react";
+import { useT } from "talkr";
 
-import { filters } from "@/components/dropdown/dropdown.const";
 import { FilterStatus } from "@/shared/types";
+import { getFilterOptions } from "@/components/dropdown/dropdown.const";
 
 interface DropdownHeroUiProps {
   selectedFilter: FilterStatus;
@@ -10,16 +11,19 @@ interface DropdownHeroUiProps {
 }
 
 const DropdownHeroUi = ({ selectedFilter, onFilterChange }: DropdownHeroUiProps): ReactElement => {
+  const { T: t } = useT();
+  const filterOptions = useMemo(() => getFilterOptions(t), [t]);
+
   return (
     <Dropdown>
       <DropdownTrigger>
         <Button variant="bordered">
-          {selectedFilter === "all" ? "All Filters" : selectedFilter}
+          {selectedFilter === "all" ? t("status_all") : selectedFilter}
         </Button>
       </DropdownTrigger>
       <DropdownMenu
         aria-label="Filter requests"
-        items={filters}
+        items={filterOptions}
         selectionMode="single"
         selectedKeys={new Set([selectedFilter])}
         onSelectionChange={(keys) => {

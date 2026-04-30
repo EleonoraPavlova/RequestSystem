@@ -12,12 +12,19 @@ import { formatDate } from "@/shared/utils/formatDate";
 interface RequestItemProps {
   onDelete: (_id: RequestCard["id"]) => void;
   onChangeStatus: (_id: RequestCard["id"], _status: RequestStatus) => void;
+  onArchived: (_id: RequestCard["id"]) => void;
   request: RequestCard;
   isManagerPage: boolean;
 }
 
 const RequestItem = memo(
-  ({ onDelete, onChangeStatus, request, isManagerPage }: RequestItemProps): ReactElement => {
+  ({
+    onDelete,
+    onChangeStatus,
+    request,
+    isManagerPage,
+    onArchived,
+  }: RequestItemProps): ReactElement => {
     const { T: t } = useT();
     const [isExpanded, setIsExpanded] = useState(false);
 
@@ -62,6 +69,15 @@ const RequestItem = memo(
               className={styles.btn}
             >
               {t("action_change_status")}
+            </Button>
+
+            <Button
+              variant="primary"
+              size="sm"
+              onClick={() => onArchived(request.id)}
+              className={styles.btn}
+            >
+              {t("btn_archive")}
             </Button>
           </div>
         )}
