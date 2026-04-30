@@ -12,15 +12,16 @@ import uk from "./locales/uk.json";
 import { store } from "./services/store";
 
 import { ThemeProvider } from "@/providers/themeProvider";
+import { TalkrProvider } from "@/providers/talkrProvider";
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
     <HeroUIProvider>
       <ThemeProvider>
         <Provider store={store}>
-          <Talkr languages={{ en, uk }} defaultLanguage="uk">
+          <TalkrProvider>
             <App />
-          </Talkr>
+          </TalkrProvider>
         </Provider>
       </ThemeProvider>
     </HeroUIProvider>

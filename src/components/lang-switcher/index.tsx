@@ -3,11 +3,17 @@ import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@heroui/r
 
 import { languages } from "@/components/lang-switcher/lang-switcher.const";
 import Button from "@/components/button";
+import { saveLocalelocalStorage } from "@/shared/lib/locale";
 
 const LanguageSwitcher = () => {
   const { locale, setLocale } = useT();
 
   const currentLang = languages.find((lang) => lang.code === locale) || languages[0];
+
+  const handleLanguageChange = (newLang: string) => {
+    setLocale(newLang);
+    saveLocalelocalStorage(newLang);
+  };
 
   return (
     <Dropdown>
@@ -18,7 +24,10 @@ const LanguageSwitcher = () => {
         </Button>
       </DropdownTrigger>
 
-      <DropdownMenu aria-label="Language selection" onAction={(key) => setLocale(key as string)}>
+      <DropdownMenu
+        aria-label="Language selection"
+        onAction={(key) => handleLanguageChange(key as string)}
+      >
         {languages.map((lang) => (
           <DropdownItem key={lang.code} className="flex items-center gap-3 py-2">
             <span className="m-3">{lang.flag}</span>

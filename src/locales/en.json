@@ -21,6 +21,7 @@
   "form_title_label": "Title",
   "form_title_placeholder": "Enter title...",
   "list_empty": "No requests found. Create one above!",
+  "language_selection": "Language selection",
   "loading": "Loading...",
   "manager": "Manager",
   "modal_cancel": "Cancel",

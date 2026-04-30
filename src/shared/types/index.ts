@@ -35,3 +35,10 @@ export interface Language {
   nativeName: string;
   flag: string;
 }
+
+export interface LogEntry {
+  id: string;
+  role: "User" | "Manager";
+  timestamp: string;
+  action: string;
+}

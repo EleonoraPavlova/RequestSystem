@@ -1,6 +1,7 @@
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@heroui/react";
 import { ReactElement } from "react";
 import { NavLink } from "react-router-dom";
+import { useT } from "talkr";
 
 import Logo from "../logo";
 
@@ -9,6 +10,7 @@ import ThemeToggle from "@/components/theme-toggle";
 import LanguageSwitcher from "@/components/lang-switcher";
 
 const NavbarHeroui = (): ReactElement => {
+  const { T: t } = useT();
   const customClass = ({ isActive }: { isActive: boolean }) =>
     isActive
       ? "text-secondary font-semibold underline underline-offset-4 decoration-secondary"
@@ -22,12 +24,12 @@ const NavbarHeroui = (): ReactElement => {
       <NavbarContent className="sm:flex gap-[20px]" justify="center">
         <NavbarItem>
           <NavLink to={PATH.USER} className={customClass}>
-            User
+            {t("nav_user")}
           </NavLink>
         </NavbarItem>
         <NavbarItem>
           <NavLink to={PATH.MANAGER} className={customClass}>
-            Manager
+            {t("nav_manager")}
           </NavLink>
         </NavbarItem>
       </NavbarContent>

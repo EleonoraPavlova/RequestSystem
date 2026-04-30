@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import { useT } from "talkr";
 
 import styles from "./manager-page.module.css";
 
@@ -10,6 +11,7 @@ import { FilterStatus } from "@/shared/types";
 import { setFilter } from "@/services/requestSlice";
 
 const ManagerPage = (): ReactElement => {
+  const { T: t } = useT();
   const dispatch = useAppDispatch();
   const currentFilter = useAppSelector((state) => state.items.filter);
 
@@ -18,7 +20,7 @@ const ManagerPage = (): ReactElement => {
   };
 
   return (
-    <PageLayout title={"Manager's area"}>
+    <PageLayout title={t("page_manager_title")}>
       <div className={styles.dropdown}>
         <DropdownHeroUi selectedFilter={currentFilter} onFilterChange={handleFilterChange} />
       </div>

@@ -1,6 +1,7 @@
 import { ReactElement, useCallback, useMemo, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { useT } from "talkr";
 
 import styles from "./request-list.module.css";
 
@@ -14,6 +15,7 @@ import ModalConfirm from "@/components/modal";
 import AlertHeroui from "@/components/alert";
 
 const RequestList = (): ReactElement => {
+  const { T: t } = useT();
   const { list, filter } = useAppSelector((state) => state.items);
 
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -74,7 +76,7 @@ const RequestList = (): ReactElement => {
   );
 
   if (filteredRequests.length === 0) {
-    return <p>No requests found. Create one above!</p>;
+    return <p>{t("list_empty")}</p>;
   }
 
   return (
@@ -95,9 +97,9 @@ const RequestList = (): ReactElement => {
         isOpen={isDeleteModalOpen}
         onClose={closeDeleteModal}
         onConfirm={confirmDelete}
-        description="Are you sure you want to delete this request? This action cannot be undone"
+        description={t("modal_confirm_delete")}
       />
-      {isAlertVisible && <AlertHeroui title={"Request removed successfully!"} color={"success"} />}
+      {isAlertVisible && <AlertHeroui title={t("alert_request_removed")} color={"success"} />}
     </>
   );
 };

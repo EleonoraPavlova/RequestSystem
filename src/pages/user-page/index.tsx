@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import { useT } from "talkr";
 
 import styles from "./user-page.module.css";
 
@@ -7,8 +8,9 @@ import RequestCard from "@/components/request-card";
 import RequestList from "@/components/request-list";
 
 const UserPage = (): ReactElement => {
+  const { T: t } = useT();
   return (
-    <PageLayout title={"User's area"}>
+    <PageLayout title={t("page_user_title")}>
       <div className={styles.wrapper}>
         <RequestCard />
         <RequestList />
