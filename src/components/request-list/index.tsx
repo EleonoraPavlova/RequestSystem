@@ -1,4 +1,4 @@
-import { ReactElement, useCallback, useMemo } from "react";
+import { ReactElement, useCallback, useMemo, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 
@@ -10,9 +10,14 @@ import { changeRequestStatus, removeRequest } from "@/services/requestSlice";
 import RequestItem from "@/components/request-list/request-item";
 import { PATH } from "@/shared/enums";
 import { cn } from "@/shared/lib/cn";
+import ModalConfirm from "@/components/modal";
 
 const RequestList = (): ReactElement => {
   const { list, filter } = useAppSelector((state) => state.items);
+
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [requestToDelete, setRequestToDelete] = useState<RequestCard["id"] | null>(null);
+
   const dispatch = useDispatch();
 
   const location = useLocation();
@@ -23,13 +28,6 @@ const RequestList = (): ReactElement => {
     if (filter === "all") return list;
     return list.filter((req) => req.status === filter);
   }, [list, filter]);
-
-  const removeRequestHandler = useCallback(
-    (id: RequestCard["id"]) => {
-      dispatch(removeRequest(id));
-    },
-    [dispatch]
-  );
 
   const changeRequestHandler = useCallback(
     (id: RequestCard["id"], currentStatus: RequestStatus) => {
@@ -44,22 +42,55 @@ const RequestList = (): ReactElement => {
     [dispatch]
   );
 
+  const openDeleteModal = useCallback((id: RequestCard["id"]) => {
+    setRequestToDelete(id);
+    setIsDeleteModalOpen(true);
+  }, []);
+
+  const closeDeleteModal = useCallback(() => {
+    setRequestToDelete(null);
+    setIsDeleteModalOpen(false);
+  }, []);
+
+  const confirmDelete = useCallback(() => {
+    if (requestToDelete) {
+      dispatch(removeRequest(requestToDelete));
+    }
+    closeDeleteModal();
+  }, [dispatch, requestToDelete, closeDeleteModal]);
+
+  const removeRequestHandler = useCallback(
+    (id: RequestCard["id"]) => {
+      openDeleteModal(id);
+    },
+    [openDeleteModal]
+  );
+
   if (filteredRequests.length === 0) {
     return <p>No requests found. Create one above!</p>;
   }
 
   return (
-    <div className={cn(styles.list, isManagerPage && styles.manager)}>
-      {filteredRequests.map((request: RequestCard) => (
-        <RequestItem
-          request={request}
-          onDelete={removeRequestHandler}
-          key={request.id}
-          onChangeStatus={changeRequestHandler}
-          isManagerPage={isManagerPage}
-        />
-      ))}
-    </div>
+    <>
+      <div className={cn(styles.list, isManagerPage && styles.manager)}>
+        {filteredRequests.map((request: RequestCard) => (
+          <RequestItem
+            request={request}
+            onDelete={removeRequestHandler}
+            key={request.id}
+            onChangeStatus={changeRequestHandler}
+            isManagerPage={isManagerPage}
+          />
+        ))}
+      </div>
+
+      <ModalConfirm
+        isOpen={isDeleteModalOpen}
+        onClose={closeDeleteModal}
+        onConfirm={confirmDelete}
+        description="Are you sure you want to delete this request? This action cannot be undone"
+      />
+    </>
   );
 };
 
