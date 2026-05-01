@@ -39,11 +39,21 @@ All requests are automatically saved to `localStorage`, so data persists between
 - Dynamic Filtering: Quickly sort and find requests using a status-based filter (All, New, In Progress, Done) powered by HeroUI Dropdown
  - Request Deletion: Ability to permanently remove requests from the system
  - Detailed Insights: Each card displays unique request IDs and automated creation timestamps for better tracking
+ - Safety First: Implementation of Confirmation Modals for destructive actions like deleting a request to prevent accidental data loss
+ - Archiving System: Managers can move completed or irrelevant tasks to an Archive. These tasks are hidden from the main dashboard but remain accessible in a logs view
 
+### 3. **Logs View:**
 
-### 3. **Responsive Design:**
+ - Action Tracking: A route that records every significant action in the system (e.g., status changes, deletions, archiving)
+ - Persistence: Logs are stored alongside requests, providing a clear history of operations during the session
+
+### 4. **Responsive Design:**
 
 - The app is fully responsive, ensuring an optimal experience on both **desktop and mobile devices**.
+- A smooth, animated Drawer (Burger Menu) for seamless navigation on smaller screens
+
+### 5. **Localization:**
+ - Full multi-language support (English/Ukrainian) powered by **talkr**, allowing users to switch languages on the fly
 
 > ## Project Stack
 

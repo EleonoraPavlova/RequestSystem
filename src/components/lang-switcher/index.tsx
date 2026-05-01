@@ -20,7 +20,7 @@ const LanguageSwitcher = () => {
       <DropdownTrigger>
         <Button variant="ghost" className="flex items-center gap-2 px-3">
           <span className="m-2">{currentLang.flag}</span>
-          <span className="hidden sm:inline">{currentLang.name}</span>
+          <span className="hidden lg:inline">{currentLang.name}</span>
         </Button>
       </DropdownTrigger>
 

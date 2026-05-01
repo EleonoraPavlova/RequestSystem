@@ -1,7 +1,7 @@
 import { ReactElement, ReactNode } from "react";
 
+import NavbarHeroui from "@/components/nav-bar";
 import AlertHeroui from "@/components/alert";
-import NavbarHeroui from "@/components/navBar";
 import ProgressHeroui from "@/components/progress";
 import { useAppSelector } from "@/services/hooks";
 
