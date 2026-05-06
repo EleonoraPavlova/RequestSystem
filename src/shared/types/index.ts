@@ -37,9 +37,14 @@ export interface Language {
   flag: string;
 }
 
+export interface LogActionObject {
+  key: string;
+  params?: Record<string, string | number>;
+}
+
 export interface LogEntry {
   id: string;
   role: "User" | "Manager";
   timestamp: string;
-  action: string;
+  action: string | LogActionObject;
 }

@@ -15,7 +15,7 @@ import { useAppSelector } from "@/services/hooks";
 const TableHeroUi = () => {
   const { T: t } = useT();
   const logs = useAppSelector((state) => state.logs.list);
-
+  console.log("logs", logs);
   return (
     <Table aria-label={t("logs_title")}>
       <TableHeader>
@@ -26,12 +26,18 @@ const TableHeroUi = () => {
       <TableBody emptyContent={t("logs_empty")}>
         {logs.map((log: LogEntry) => (
           <TableRow key={log.id}>
-            <TableCell>
+            <TableCell className={"px-1"}>
               <Chip size="sm" variant="flat">
                 {t(`role_${log.role.toLowerCase()}` as string)}
               </Chip>
             </TableCell>
-            <TableCell>{log.action}</TableCell>
+            <TableCell>
+              {typeof log.action === "string"
+                ? t(log.action)
+                : t(log.action.key, {
+                    status: t(log.action.params?.status as string),
+                  })}
+            </TableCell>
             <TableCell>{new Date(log.timestamp).toLocaleString()}</TableCell>
           </TableRow>
         ))}

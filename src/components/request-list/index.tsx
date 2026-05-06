@@ -56,18 +56,19 @@ const RequestList = ({ isArchiveMode = false }: RequestListProps): ReactElement 
         dispatch(changeRequestStatus({ id, newStatus: next }));
 
         const statusKey = `status_${next.replace("-", "")}`;
-        const statusLabel = t(statusKey);
-        const logMessage = t("action_status_changed_to").replace("{{status}}", statusLabel);
 
-        logAction(logMessage);
+        logAction({
+          key: "action_status_changed_to",
+          params: { status: statusKey },
+        });
       }
     },
-    [dispatch]
+    [dispatch, logAction]
   );
 
   const onArchivedHandler = (id: RequestCard["id"]) => {
     dispatch(archiveRequest(id));
-    logAction(t("alert_archived_success"));
+    logAction("alert_archived_success");
 
     setIsAlertVisibleArchived(true);
     setTimeout(() => {
@@ -88,7 +89,7 @@ const RequestList = ({ isArchiveMode = false }: RequestListProps): ReactElement 
   const confirmDelete = useCallback(() => {
     if (requestToDelete) {
       dispatch(removeRequest(requestToDelete));
-      logAction(t("request_removed_success"));
+      logAction("request_removed_success");
 
       setIsAlertVisible(true);
       setTimeout(() => {
@@ -96,7 +97,7 @@ const RequestList = ({ isArchiveMode = false }: RequestListProps): ReactElement 
       }, 4000);
     }
     closeDeleteModal();
-  }, [dispatch, requestToDelete, closeDeleteModal]);
+  }, [dispatch, requestToDelete, closeDeleteModal, logAction]);
 
   const removeRequestHandler = useCallback(
     (id: RequestCard["id"]) => {
